@@ -28,5 +28,6 @@ USER lightpanda
 
 EXPOSE 9222/tcp
 
-ENTRYPOINT ["lightpanda", "serve", "--host", "0.0.0.0", "--port", "9222"]
+ENTRYPOINT ["lightpanda"]
+CMD ["serve", "--host", "0.0.0.0", "--port", "9222"]
 STOPSIGNAL SIGKILL
