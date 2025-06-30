@@ -29,6 +29,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
+          no-cache: true
           tags: "${{ vars.DOCKER_USER }}/browser:latest,${{ vars.DOCKER_USER }}/browser:nightly"
           # For pull requests, export results to the build cache.
           # Otherwise, push to a registry.
