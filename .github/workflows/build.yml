@@ -25,6 +25,7 @@ jobs:
           endpoint: "lightpanda/lightpanda-browser"
           install: true
           platforms: linux/amd64,linux/arm64
+          cache-binary: false
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
