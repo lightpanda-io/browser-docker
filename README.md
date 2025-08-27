@@ -30,7 +30,6 @@ services:
     lightpanda:
         image: lightpanda/browser:nightly
         restart: unless-stopped
-        privileged: true
         ports:
             - '9222:9222'
 ```
