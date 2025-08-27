@@ -20,7 +20,7 @@ Fast web automation for AI agents, LLM training, scraping and testing:
 Using docker run.
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 --privileged lightpanda/browser:nightly
+$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly
 ```
 
 Using docker compose.
