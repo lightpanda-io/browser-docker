@@ -37,17 +37,17 @@ services:
 ### Fetch command
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly fetch https://lightpanda.io
+$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly lightpanda fetch https://lightpanda.io
 ```
 
 ### CDP server
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly serve --host 0.0.0.0 --port 9222 --log_level debug
+$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly lightpanda serve --host 0.0.0.0 --port 9222 --log_level debug
 ```
 
 ### Program version
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly version
+$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly lightpanda version
 ```
