@@ -20,7 +20,7 @@ Fast web automation for AI agents, LLM training, scraping and testing:
 Using docker run.
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly
+$ docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly
 ```
 
 Using docker compose.
@@ -31,23 +31,23 @@ services:
         image: lightpanda/browser:nightly
         restart: unless-stopped
         ports:
-            - '9222:9222'
+            - '127.0.0.1:9222:9222'
 ```
 
 ### Fetch command
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly lightpanda fetch https://lightpanda.io
+$ docker run -rm lightpanda/browser:nightly lightpanda fetch --dump html https://lightpanda.io
 ```
 
 ### CDP server
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly lightpanda serve --host 0.0.0.0 --port 9222 --log_level debug
+$ docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly lightpanda serve --host 0.0.0.0 --port 9222 --log_level debug
 ```
 
 ### Program version
 
 ```
-$ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly lightpanda version
+$ docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly lightpanda version
 ```
