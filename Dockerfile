@@ -6,6 +6,7 @@ RUN apt-get update -yq && \
 FROM docker.io/debian:stable-slim AS builder
 
 ARG TARGETPLATFORM
+ARG TAG=nightly
 
 LABEL maintainer="Pierre Tachoire <pierre@lightpanda.io>"
 
@@ -13,13 +14,12 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y curl ca-certificates
 
-# Install latest lightpanda nightly build
 RUN case $TARGETPLATFORM in \
     "linux/arm64") ARCH="aarch64" ;; \
     *) ARCH="x86_64" ;; \
     esac && \
     curl --fail -L -o /lightpanda \
-    https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-${ARCH}-linux && \
+    https://github.com/lightpanda-io/browser/releases/download/${TAG}/lightpanda-${ARCH}-linux && \
     chmod a+x /lightpanda
 
 FROM docker.io/debian:stable-slim
