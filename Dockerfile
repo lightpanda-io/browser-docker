@@ -14,6 +14,15 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y curl ca-certificates
 
+# Use Mozilla's CA certificates store provided by Curl.
+# See https://curl.se/docs/caextract.html
+RUN cd /tmp && \
+    curl --fail -L -O https://curl.se/ca/cacert.pem && \
+    curl --fail -L -O https://curl.se/ca/cacert.pem.sha256 && \
+    sha256sum -c cacert.pem.sha256 && \
+    mv cacert.pem /ca-certificates.crt && \
+    rm cacert.pem.sha256
+
 RUN case $TARGETPLATFORM in \
     "linux/arm64") ARCH="aarch64" ;; \
     *) ARCH="x86_64" ;; \
@@ -24,7 +33,7 @@ RUN case $TARGETPLATFORM in \
 
 FROM docker.io/debian:stable-slim
 
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=builder /ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=builder /lightpanda /bin/lightpanda
 
 COPY --from=tini /usr/bin/tini /usr/bin/tini
