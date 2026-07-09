@@ -51,3 +51,15 @@ $ docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nigh
 ```
 $ docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly lightpanda version
 ```
+
+## Environment variables
+
+The image sets `LIGHTPANDA_DISABLE_CORE_DUMP=1` by default to disable core
+dumps.
+
+To re-enable core dumps, unset the variable at run time by passing `-e` with
+the variable name only (and no value set in your shell):
+
+```
+$ docker run -d --name lightpanda -p 127.0.0.1:9222:9222 -e LIGHTPANDA_DISABLE_CORE_DUMP lightpanda/browser:nightly
+```
