@@ -42,6 +42,8 @@ RUN groupadd -r lightpanda && useradd -rm -g lightpanda lightpanda
 
 USER lightpanda
 
+ENV LIGHTPANDA_DISABLE_CORE_DUMP=1
+
 EXPOSE 9222/tcp
 
 # Lightpanda install only some signal handlers, and PID 1 doesn't have a default SIGTERM signal handler.
