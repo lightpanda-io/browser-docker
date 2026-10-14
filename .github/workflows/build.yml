@@ -9,7 +9,7 @@ on:
         type: string
 
 env:
-  TAGS_FMT: ${{ inputs.tag == 'nightly' && '{0}/browser:latest,{0}/browser:{1}' || '{0}/browser:{1}' }}
+  TAGS_FMT: ${{ inputs.tag != 'nightly' && '{0}/browser:latest,{0}/browser:{1}' || '{0}/browser:{1}' }}
 
 jobs:
   docker:
