@@ -37,7 +37,7 @@ services:
 ### Fetch command
 
 ```
-$ docker run -rm lightpanda/browser:latest lightpanda fetch --dump html https://lightpanda.io
+$ docker run --rm lightpanda/browser:latest lightpanda fetch --dump html https://lightpanda.io
 ```
 
 ### CDP server
